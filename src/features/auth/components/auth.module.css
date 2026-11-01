@@ -1,0 +1,465 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(440px, 1.1fr);
+  background: #fffaf4;
+  color: #42191a;
+}
+
+.visualPanel {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(30px, 5vw, 66px);
+  color: #fff6e9;
+  background:
+    linear-gradient(160deg, #451216e8 0%, #671b1fe0 50%, #351011ed 100%),
+    url("https://images.unsplash.com/photo-1604608672516-6e2b7c5d07e5?auto=format&fit=crop&w=1400&q=85")
+      center / cover;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff6e9;
+  width: fit-content;
+}
+
+.brandMark {
+  color: #f0c687;
+  font: 42px/1 Georgia, "Times New Roman", serif;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand strong {
+  font: 700 17px Georgia, "Times New Roman", serif;
+  letter-spacing: 0.04em;
+}
+
+.brand small {
+  margin-top: 5px;
+  color: #e8cdb5;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.visualCopy {
+  max-width: 470px;
+  margin: auto 0;
+  padding: 70px 0;
+}
+
+.visualOrnament {
+  color: #f2c67f;
+  font-size: 24px;
+}
+
+.visualCopy > p:first-of-type,
+.visualFooter {
+  color: #e4bd91;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.visualCopy h1 {
+  margin: 20px 0;
+  font: 400 clamp(38px, 4vw, 58px)/1.08 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.035em;
+}
+
+.visualRule {
+  display: block;
+  width: 52px;
+  height: 2px;
+  background: #e6b76e;
+}
+
+.visualCopy .visualCaption {
+  max-width: 300px;
+  margin-top: 20px;
+  color: #f1dfca;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.visualFooter {
+  margin: 0;
+  font-size: 8px;
+}
+
+.formPanel {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 54px clamp(24px, 7vw, 100px) 25px;
+  background:
+    radial-gradient(ellipse at 90% 4%, #f8e7d0 0, transparent 30%),
+    #fffaf4;
+}
+
+.loginCard {
+  width: min(100%, 430px);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #9c6039;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.loginCard h2,
+.modal h2 {
+  margin: 0;
+  color: #451619;
+  font: 400 clamp(28px, 3vw, 38px)/1.15 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.03em;
+}
+
+.formLead,
+.modalLead {
+  margin: 11px 0 27px;
+  color: #786860;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.form {
+  display: grid;
+  gap: 17px;
+}
+
+.form label {
+  display: grid;
+  gap: 8px;
+  color: #4a3530;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid #e8dcd0;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #42191a;
+  font-size: 14px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form input::placeholder {
+  color: #a8988e;
+}
+
+.form input:focus {
+  border-color: #9c4a3c;
+  box-shadow: 0 0 0 3px #9c4a3c1a;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.primaryButton {
+  border: 1px solid #76191e;
+  background: #76191e;
+  color: #fff;
+}
+
+.primaryButton:hover {
+  background: #5e1117;
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  width: 100%;
+  border: 1px solid #d9c2ad;
+  background: transparent;
+  color: #671b1f;
+}
+
+.secondaryButton:hover {
+  background: #fff1e2;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 25px 0 15px;
+  color: #a08d81;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #eadfd4;
+}
+
+.disclaimer {
+  margin: 20px 0 0;
+  color: #94847a;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.pageFooter {
+  margin: auto 0 0;
+  padding-top: 38px;
+  color: #9a8b81;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.mobileBrand {
+  display: none;
+}
+
+.demoNotice {
+  margin: -4px 0 0;
+  padding: 11px 13px;
+  border: 1px solid #efd9b6;
+  border-radius: 7px;
+  background: #fff5e6;
+  color: #71502f;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.demoNotice strong {
+  color: #64181e;
+  letter-spacing: 0.08em;
+}
+
+.error {
+  margin: -7px 0 0;
+  color: #a51d27;
+  font-size: 12px;
+}
+
+.textButton {
+  border: 0;
+  background: transparent;
+  color: #76191e;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px;
+}
+
+.textButton:hover {
+  text-decoration: underline;
+}
+
+.signedInCard {
+  display: grid;
+  gap: 12px;
+  color: #62534b;
+  font-size: 13px;
+}
+
+.signedInCard p {
+  margin: 0 0 4px;
+}
+
+.signedInCard strong {
+  color: #42191a;
+}
+
+.loading {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  background: #fffaf4;
+  color: #725d52;
+}
+
+.loadingMark {
+  color: #76191e;
+  font: 46px Georgia, "Times New Roman", serif;
+}
+
+.loading p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 20px;
+  background: #1d0d0dcc;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: relative;
+  width: min(100%, 460px);
+  max-height: calc(100svh - 40px);
+  overflow-y: auto;
+  padding: 35px clamp(22px, 5vw, 42px) 25px;
+  border: 1px solid #f1e4d7;
+  border-radius: 16px;
+  background: #fffaf4;
+  box-shadow: 0 25px 90px #16080755;
+}
+
+.loginModal {
+  width: min(100%, 430px);
+}
+
+.closeButton {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #f4e9de;
+  color: #5e2524;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: #ead7c5;
+}
+
+.modalIcon {
+  margin-bottom: 12px;
+  color: #a94729;
+  font: 34px Georgia, "Times New Roman", serif;
+}
+
+.modal h2 {
+  font-size: 30px;
+}
+
+.modalLead {
+  margin-bottom: 20px;
+}
+
+.legalNote {
+  margin: 18px 0 0;
+  color: #9b8a7f;
+  font-size: 9px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .page {
+    grid-template-columns: minmax(0, 0.75fr) minmax(390px, 1fr);
+  }
+
+  .visualPanel {
+    padding: 32px;
+  }
+
+  .visualCopy h1 {
+    font-size: 42px;
+  }
+
+  .formPanel {
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    display: block;
+    min-height: calc(100svh - 62px);
+    background:
+      radial-gradient(ellipse at 90% 0%, #f4dfc8 0, transparent 38%),
+      #fffaf4;
+  }
+
+  .visualPanel {
+    display: none;
+  }
+
+  .formPanel {
+    min-height: calc(100svh - 62px);
+    justify-content: flex-start;
+    padding: 30px 22px 20px;
+    background: transparent;
+  }
+
+  .mobileBrand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: clamp(58px, 15vh, 105px);
+    color: #671b1f;
+    font: 700 14px Georgia, "Times New Roman", serif;
+    letter-spacing: 0.03em;
+  }
+
+  .mobileBrand .brandMark {
+    font-size: 31px;
+  }
+
+  .loginCard h2 {
+    font-size: 32px;
+  }
+
+  .pageFooter {
+    padding-top: 34px;
+  }
+}
+
+@media (max-width: 700px) {
+  .loading {
+    min-height: calc(100svh - 62px);
+  }
+}
+
+@media (max-width: 360px) {
+  .formPanel {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form input,
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+}
