@@ -1,32 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { products } from "@/features/home/data/home-data";
 import MobileBottomNav from "@/features/home/components/mobile-bottom-nav";
+import StoreFooter from "@/features/home/components/store-footer";
+import StoreHeader from "@/features/home/components/store-header";
 
 export default function ProductsPage() {
   const [cart, setCart] = useState(0);
   const [notice, setNotice] = useState("");
+  const [query, setQuery] = useState("");
+  const visibleProducts = products.filter((product) =>
+    `${product.name} ${product.category}`
+      .toLowerCase()
+      .includes(query.trim().toLowerCase()),
+  );
   return (
     <main className="content-page">
-      <header className="content-header">
-        <Link className="content-brand" href="/">
-          ॐ{" "}
-          <span>
-            || KALASH & KUMKUM ||<small>Puja Samagri · Puja Seva · Bhakti</small>
-          </span>
-        </Link>
-        <nav>
-          <Link href="/">Home</Link>
-          <Link className="current" href="/products">
-            Products
-          </Link>
-          <Link href="/puja-list">Puja List</Link>
-          <Link href="/about">About Us</Link>
-        </nav>
-        <span className="catalog-cart">Cart · {cart}</span>
-      </header>
+      <StoreHeader
+        currentPath="/products"
+        cartCount={cart}
+        query={query}
+        onQueryChange={setQuery}
+        onCartClick={() =>
+          setNotice(
+            cart
+              ? `You have ${cart} ${cart === 1 ? "item" : "items"} in your cart`
+              : "Your cart is empty",
+          )
+        }
+      />
       <section className="catalog-intro">
         <p className="eyebrow">PURE &amp; TRUSTED</p>
         <h1>Shop Puja Essentials</h1>
@@ -36,7 +39,7 @@ export default function ProductsPage() {
         </p>
       </section>
       <section className="catalog-grid">
-        {products.map((product) => (
+        {visibleProducts.map((product) => (
           <article className="catalog-card" key={product.name}>
             <div
               className="catalog-image"
@@ -61,11 +64,11 @@ export default function ProductsPage() {
             </div>
           </article>
         ))}
+        {visibleProducts.length === 0 && (
+          <p className="kit-empty-state">No products match “{query}”. Try another search.</p>
+        )}
       </section>
-      <footer className="content-footer">
-        <span>© 2025 KALASH & KUMKUM. All rights reserved.</span>
-        <Link href="/">Back to Home ↑</Link>
-      </footer>
+      <StoreFooter />
       <MobileBottomNav
         currentPath="/products"
         cartCount={cart}

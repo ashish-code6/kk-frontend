@@ -135,7 +135,11 @@ export default function RegistrationModal({
         >
           ×
         </button>
-        <div className={styles.modalIcon} aria-hidden="true">ॐ</div>
+        <img
+          className={styles.modalIcon}
+          src="/kk-logo-transparent.png"
+          alt="KALASH & KUMKUM — Tradition Delivered with Devotion"
+        />
         <p className={styles.eyebrow}>JOIN OUR COMMUNITY</p>
         <h2 id="registration-title">
           {step === "details" ? "Create your account" : "Verify your email"}

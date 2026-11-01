@@ -103,7 +103,11 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
   if (authorizedPath !== pathname) {
     return (
       <main className={styles.loading} aria-live="polite">
-        <span className={styles.loadingMark}>ॐ</span>
+        <img
+          className={styles.loadingMark}
+          src="/kk-logo-transparent.png"
+          alt="KALASH & KUMKUM"
+        />
         {error ? (
           <>
             <p role="alert">{error}</p>

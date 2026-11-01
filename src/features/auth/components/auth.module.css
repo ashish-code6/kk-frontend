@@ -304,8 +304,8 @@
 }
 
 .loadingMark {
-  color: #76191e;
-  font: 46px Georgia, "Times New Roman", serif;
+  width: 90px;
+  height: auto;
 }
 
 .loading p {
@@ -360,9 +360,10 @@
 }
 
 .modalIcon {
+  display: block;
+  width: 116px;
+  height: auto;
   margin-bottom: 12px;
-  color: #a94729;
-  font: 34px Georgia, "Times New Roman", serif;
 }
 
 .modal h2 {

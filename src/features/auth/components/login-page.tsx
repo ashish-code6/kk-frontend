@@ -111,7 +111,11 @@ export default function LoginPage({
             ×
           </button>
         )}
-        <div className={styles.modalIcon} aria-hidden="true">ॐ</div>
+        <img
+          className={styles.modalIcon}
+          src="/kk-logo-transparent.png"
+          alt="KALASH & KUMKUM — Tradition Delivered with Devotion"
+        />
         <p className={styles.eyebrow}>KALASH &amp; KUMKUM · WELCOME</p>
         <h2 id="login-title">Sign in to your account</h2>
         <p className={styles.modalLead}>

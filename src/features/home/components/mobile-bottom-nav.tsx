@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 type MobileBottomNavProps = {
-  currentPath: "/" | "/products" | "/puja-list" | "/about";
+  currentPath: "/" | "/products" | "/puja-kits" | "/puja-list" | "/about";
   cartCount?: number;
   onCartClick?: () => void;
 };
@@ -37,11 +37,20 @@ export default function MobileBottomNav({
           <span aria-hidden="true">⌂</span>Home
         </Link>
         <Link
-          href="/products"
-          className={currentPath === "/products" ? "selected" : undefined}
-          aria-current={currentPath === "/products" ? "page" : undefined}
+          href={currentPath === "/puja-kits" ? "/puja-kits" : "/products"}
+          className={
+            currentPath === "/products" || currentPath === "/puja-kits"
+              ? "selected"
+              : undefined
+          }
+          aria-current={
+            currentPath === "/products" || currentPath === "/puja-kits"
+              ? "page"
+              : undefined
+          }
         >
-          <span aria-hidden="true">▦</span>Products
+          <span aria-hidden="true">▦</span>
+          {currentPath === "/puja-kits" ? "Puja Kits" : "Products"}
         </Link>
         <Link
           href="/puja-list"

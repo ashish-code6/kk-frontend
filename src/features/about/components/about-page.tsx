@@ -1,27 +1,15 @@
 import Link from "next/link";
 import MobileBottomNav from "@/features/home/components/mobile-bottom-nav";
+import StoreFooter from "@/features/home/components/store-footer";
+import StoreHeader from "@/features/home/components/store-header";
 
 export default function AboutPage() {
   return (
     <main className="content-page">
-      <header className="content-header">
-        <Link className="content-brand" href="/">
-          ॐ{" "}
-          <span>
-            || KALASH & KUMKUM ||
-            <small>Puja Samagri · Puja Seva · Bhakti</small>
-          </span>
-        </Link>
-
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/puja-list">Puja List</Link>
-          <Link className="current" href="/about">
-            About Us
-          </Link>
-        </nav>
-      </header>
+      <StoreHeader
+        currentPath="/about"
+        cartCount={0}
+      />
 
       <section className="content-hero about-hero">
         <p className="eyebrow">OUR STORY</p>
@@ -82,11 +70,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <footer className="content-footer">
-        <span>© 2025 KALASH & KUMKUM. All rights reserved.</span>
-
-        <Link href="/">Back to Home ↑</Link>
-      </footer>
+      <StoreFooter />
       <MobileBottomNav currentPath="/about" />
     </main>
   );

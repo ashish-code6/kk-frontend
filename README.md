@@ -23,9 +23,9 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 Copy `.env.example` to `.env.local` to configure
 `NEXT_PUBLIC_API_URL=http://localhost:5000/api`.
 Start the backend from `kk-backend` with `npm run dev`, then restart the frontend
-development server so Next.js loads the API URL. Login and registration use the
-backend authentication routes; other API routes need to be implemented by the backend
-before their frontend features can use them.
+development server so Next.js loads the API URL. Login and registration use the backend authentication routes. Puja Kits are loaded
+from the backend; apply the checked-in database migrations and manage kit names,
+prices, images, badges, visibility, and order in the admin panel.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

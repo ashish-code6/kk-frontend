@@ -1,29 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import MobileBottomNav from "@/features/home/components/mobile-bottom-nav";
+import StoreFooter from "@/features/home/components/store-footer";
+import StoreHeader from "@/features/home/components/store-header";
 
 export default function PujaListPage() {
   const [sent, setSent] = useState(false);
   return (
     <main className="content-page">
-      <header className="content-header">
-        <Link className="content-brand" href="/">
-          ॐ{" "}
-          <span>
-            || KALASH & KUMKUM ||<small>Puja Samagri · Puja Seva · Bhakti</small>
-          </span>
-        </Link>
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/products">Products</Link>
-          <Link className="current" href="/puja-list">
-            Puja List
-          </Link>
-          <Link href="/about">About Us</Link>
-        </nav>
-      </header>
+      <StoreHeader
+        currentPath="/puja-list"
+        cartCount={0}
+      />
       <section className="list-page-body">
         <div className="list-page-copy">
           <p className="eyebrow">YOUR RITUAL, YOUR WAY</p>
@@ -82,10 +71,7 @@ export default function PujaListPage() {
           </small>
         </form>
       </section>
-      <footer className="content-footer">
-        <span>© 2025 KALASH & KUMKUM. All rights reserved.</span>
-        <Link href="/">Back to Home ↑</Link>
-      </footer>
+      <StoreFooter />
       <MobileBottomNav currentPath="/puja-list" />
     </main>
   );

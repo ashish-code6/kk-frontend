@@ -9,6 +9,8 @@ import LoginPage from "@/features/auth/components/login-page";
 import { readAuthUser, type AuthUser } from "@/features/auth/lib/auth-session";
 import HeroCarousel from "./hero-carousel";
 import MobileBottomNav from "./mobile-bottom-nav";
+import StoreFooter from "./store-footer";
+import StoreHeader from "./store-header";
 
 function Icon({ name, size = 20 }: { name: string; size?: number }) {
   const common = {
@@ -72,24 +74,11 @@ function Icon({ name, size = 20 }: { name: string; size?: number }) {
   );
 }
 
-function Logo() {
-  return (
-    <a href="#home" className="brand" aria-label="KALASH & KUMKUM home">
-      <span className="brand-mark">ॐ</span>
-      <span>
-        <strong>|| KALASH & KUMKUM ||</strong>
-        <small>Puja Samagri · Puja Seva · Bhakti</small>
-      </span>
-    </a>
-  );
-}
-
 export default function Storefront() {
   const router = useRouter();
   const storeCategories = useHomeCategories();
   const [cart, setCart] = useState(0);
   const [query, setQuery] = useState("");
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [notice, setNotice] = useState("");
   const [showAuthModal, setShowAuthModal] = useState(true);
 
@@ -137,66 +126,20 @@ export default function Storefront() {
 
   return (
     <main id="home" className="storefront">
-      <header className="site-header">
-        <button
-          className="icon-button mobile-menu"
-          aria-label="Open menu"
-          onClick={() => setMobileMenu(!mobileMenu)}
-        >
-          <Icon name="menu" />
-        </button>
-        <Logo />
-        <nav
-          className={mobileMenu ? "main-nav is-open" : "main-nav"}
-          aria-label="Main navigation"
-        >
-          <a className="active" href="/" onClick={() => setMobileMenu(false)}>
-            Home
-          </a>
-          <a href="/products" onClick={() => setMobileMenu(false)}>
-            Products
-          </a>
-          <a href="/puja-list" onClick={() => setMobileMenu(false)}>
-            Puja List
-          </a>
-          <a href="/about" onClick={() => setMobileMenu(false)}>
-            About Us
-          </a>
-          <a href="#footer" onClick={() => setMobileMenu(false)}>
-            Contact
-          </a>
-        </nav>
-        <label className="header-search">
-          <Icon name="search" size={17} />
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search for puja items, kits or categories..."
-          />
-        </label>
-        <button
-          type="button"
-          className="icon-button account-button"
-          aria-label="Sign in or create an account"
-          onClick={() => setShowAuthModal(true)}
-        >
-          <Icon name="user" />
-        </button>
-        <button
-          className="icon-button cart-button"
-          aria-label={`Cart, ${cart} items`}
-          onClick={() =>
-            setNotice(
-              cart
-                ? `You have ${cart} ${cart === 1 ? "item" : "items"} in your cart`
-                : "Your cart is empty",
-            )
-          }
-        >
-          <Icon name="cart" />
-          <span className="cart-count">{cart}</span>
-        </button>
-      </header>
+      <StoreHeader
+        currentPath="/"
+        cartCount={cart}
+        query={query}
+        onQueryChange={setQuery}
+        onAccountClick={() => setShowAuthModal(true)}
+        onCartClick={() =>
+          setNotice(
+            cart
+              ? `You have ${cart} ${cart === 1 ? "item" : "items"} in your cart`
+              : "Your cart is empty",
+          )
+        }
+      />
 
       <HeroCarousel query={query} onQueryChange={setQuery} />
 
@@ -213,6 +156,10 @@ export default function Storefront() {
         <CategoryShop
           categories={storeCategories}
           onSelectCategory={(name) => {
+            if (name.trim().toLowerCase() === "puja kits") {
+              router.push("/puja-kits");
+              return;
+            }
             setQuery(name);
             document
               .querySelector("#products")
@@ -354,76 +301,7 @@ export default function Storefront() {
         </div>
       </section>
 
-      <footer id="footer" className="site-footer">
-        <div className="footer-main">
-          <div className="footer-brand">
-            <Logo />
-            <p>
-              Bringing devotion closer to home,
-              <br />
-              one sacred moment at a time.
-            </p>
-          </div>
-          <div>
-            <h3>Quick Links</h3>
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#puja-list">Puja List</a>
-            <a href="#about">About Us</a>
-            <a href="#footer">Contact</a>
-          </div>
-          <div>
-            <h3>Categories</h3>
-            {storeCategories.slice(0, 5).map((item) => (
-              <a href="#products" key={item.name}>
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="social-column">
-            <h3>Connect With Us</h3>
-            <div className="socials">
-              <a href="#footer" aria-label="Facebook">
-                f
-              </a>
-              <a href="#footer" aria-label="Instagram">
-                ◎
-              </a>
-              <a href="#footer" aria-label="YouTube">
-                ▶
-              </a>
-              <a href="#footer" aria-label="WhatsApp">
-                ◉
-              </a>
-            </div>
-            <h3 className="subscribe-title">
-              Subscribe for updates &amp; offers
-            </h3>
-            <form
-              className="subscribe-form"
-              onSubmit={(event) => {
-                event.preventDefault();
-                setNotice("Thank you for subscribing!");
-              }}
-            >
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                aria-label="Email for updates"
-              />
-              <button aria-label="Subscribe">➤</button>
-            </form>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>© 2025 KALASH & KUMKUM. All rights reserved.</span>
-          <span>
-            <a href="#footer">Terms &amp; Conditions</a>
-            <i /> <a href="#footer">Privacy Policy</a>
-          </span>
-        </div>
-      </footer>
+      <StoreFooter />
 
       <MobileBottomNav
         currentPath="/"
