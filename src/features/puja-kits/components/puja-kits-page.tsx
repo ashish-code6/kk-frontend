@@ -280,14 +280,17 @@ export default function PujaKitsPage() {
             aria-modal="true"
             aria-labelledby="selected-kit-title"
           >
-            <button
-              className="kit-modal-close"
-              type="button"
-              aria-label="Close kit details"
-              onClick={() => setSelectedKit(null)}
-            >
-              ×
-            </button>
+            <header className="kit-modal-header">
+              <p>K&amp;K COLLECTION <span aria-hidden="true">·</span> QUICK VIEW</p>
+              <button
+                className="kit-modal-close"
+                type="button"
+                aria-label="Close kit details"
+                onClick={() => setSelectedKit(null)}
+              >
+                ×
+              </button>
+            </header>
             <div className="kit-modal-gallery">
               {selectedKitImage ? (
                 <img
@@ -357,22 +360,6 @@ export default function PujaKitsPage() {
                   {selectedKit.deliveryInfo}
                 </p>
               )}
-              {selectedKit.includes.trim() && (
-                <section className="kit-modal-includes" aria-labelledby="kit-modal-includes-title">
-                  <h3 id="kit-modal-includes-title">What’s in this kit?</h3>
-                  <ul>
-                    {selectedKit.includes
-                      .split(/[\n,;]+/)
-                      .map((item) => item.trim())
-                      .filter(Boolean)
-                      .map((item, index) => (
-                        <li key={`${item}-${index}`}>
-                          {item}
-                        </li>
-                      ))}
-                  </ul>
-                </section>
-              )}
               <div className="kit-modal-actions">
                 <div className="kit-modal-quantity" aria-label="Quantity">
                   <button
@@ -409,6 +396,27 @@ export default function PujaKitsPage() {
                 {wishlistedKits.has(selectedKit.id) ? "♥ Added to Wishlist" : "♡ Add to Wishlist"}
               </button>
             </div>
+            {selectedKit.kitItems.length > 0 && (
+              <section className="kit-modal-includes" aria-labelledby="kit-modal-includes-title">
+                <h3 id="kit-modal-includes-title">Inside This Kit</h3>
+                <table className="kit-modal-items-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Item</th>
+                      <th scope="col">Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedKit.kitItems.map((kitItem, index) => (
+                      <tr key={`${kitItem.item}-${index}`}>
+                        <td>{kitItem.item}</td>
+                        <td>{kitItem.quantity}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </section>
+            )}
           </section>
         </div>
       )}

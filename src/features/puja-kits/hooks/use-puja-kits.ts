@@ -7,6 +7,7 @@ export type PujaKit = {
   name: string;
   description: string;
   includes: string;
+  kitItems: { item: string; quantity: string }[];
   price: number;
   originalPrice: number | null;
   rating: number | null;
